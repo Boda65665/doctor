@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p style="color:red" th:text="${err}">
+
+<label>Name: </label>
+<p th:text="${doctor.getUser().getFirstName()}+${doctor.getUser().getLastName()}"></p>
+<label>Специальность: </label>
+<p th:text="${doctor.getSpeciality()}"></p>
+<label>Рейтинг: </label>
+<p th:text="${doctor.getRating()}"></p>
+<h1>Свободно на сегодня:</h1>
+<div id="shedules"></div>
+<form method="post" th:action="'/doctor/'+${doctor.getId()}">
+    <label>время приема:</label>
+    <input type="time" name="time">
+    <br>
+    <label>Количество минут</label>
+    <input type="number" min="5" name="minutes">
+    <input type="submit" name="submit">
+</form>
+
+</body>
+<script th:inline="javascript">
+    var schedules = /*[[${doctorSchedules}]]*/ 'Emty';
+    if (schedules["timeIntervals"].length===0) document.getElementById("shedules").innerHTML="<h2>Все занято</h2>";
+    else {
+        var result = "";
+        var day = schedules["day"];
+        result += "<br><h>" + day + "</h><br>"
+        for (var j = 0; j < schedules["timeIntervals"].length; j++) {
+            var timeInterval = schedules["timeIntervals"][j];
+            result += "<p>" + timeInterval["start"].slice(0, -3) + "-" + timeInterval["end"].slice(0, -3) + "</p><br>"
+        }
+
+        document.getElementById("shedules").innerHTML = result;
+        console.log(result);
+    }
+</script>
+<a th:href="'/doctor/'+${doctor.getId()}+'/review'">Посмотреть отзовы</a>
+</html>

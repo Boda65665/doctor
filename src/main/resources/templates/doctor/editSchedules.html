@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p style="color:red" th:text="${err}">
+<form method="post" action="/doctor/editSchedules?prefix=add">
+    <select id="dayOfWeek" name="dayOfWeek">
+        <option value="1">пн</option>
+        <option value="2">вт</option>
+        <option value="3">ср</option>
+        <option value="4">чт</option>
+        <option value="5">пт</option>
+        <option value="6">сб</option>
+        <option value="7">вс</option>
+    </select>
+    <input name="startTime" type="time">
+    <input name="endTime" type="time">
+    <input type="submit" value="click">
+</form>
+<br>
+<div id="delete" class="delete"></div>
+
+</body>
+<script th:inline="javascript">
+    var schedules = /*[[${schedules}]]*/ 'Emty';
+    if (schedules!=="Emty") {
+        var result = "";
+        for (var i = 0; i < schedules.length; i++) {
+            var day = schedules[i]["day"];
+            result += "<br><h>" + day + "</h><br>"
+            for (var j = 0; j < schedules[i]["timeIntervals"].length; j++) {
+                var timeInterval = schedules[i]["timeIntervals"][j];
+                result += "<p>" + timeInterval["start"].slice(0, -3) + "-" + timeInterval["end"].slice(0, -3) + "</p><br>"
+                result += "<form method='post' action='/doctor/editSchedules?prefix=del'><input type='hidden' name='id' value=" + timeInterval["id"] + "><input type='submit' value='del'></form>"
+            }
+        }
+        document.getElementById("delete").innerHTML = result;
+        console.log(result);
+    }
+</script>
+</html>

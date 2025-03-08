@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CreateDoctor</title>
+</head>
+<body>
+<p style="color:red" th:text="${err}">
+<p style="color:green" th:text="${notification}">
+<form method="post" th:object="${doctor}">
+  <label for="email">Enter email: </label>
+  <div style="color: red"  th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+  <input name ="email" id="email" th:field="*{email}" type="text">
+  <br>
+  <div style="color:red" th:if="${#fields.hasErrors('pricePerMinute')}" th:errors="*{pricePerMinute}"></div>
+  <label for="pricePerMinute">Enter pricePerMinute: </label>
+  <input type="text" th:field="*{pricePerMinute}" name ="pricePerMinute" id="pricePerMinute"/>
+  <br>
+  <label for="speciality">Enter Speciality</label>
+  <div style="color: red"  th:if="${#fields.hasErrors('speciality')}" th:errors="*{speciality}"></div>
+  <input name ="speciality" id="speciality" th:field="*{speciality}" type="text">
+
+  <input type="submit" value="create">
+</form>
+</body>
+</html>

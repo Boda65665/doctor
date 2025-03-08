@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>болячки</title>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Trebuchet MS', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #e6ffeb, #c4e5f9);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: 20px auto;
+        }
+        #output {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 90%;
+        }
+
+        .ql-toolbar.ql-snow {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(245, 245, 245);
+            width: 90%;
+            margin: 10px auto;
+            border-radius: 10px;
+        }
+        .ql-editor {
+            height: 150px;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .ql-toolbar.ql-snow + .ql-container.ql-snow {
+            width: 90%;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            height: 50px;
+            text-align: center;
+            font-size: 1.3em;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            margin: 10px auto;
+            font-size: 1.2em;
+            color: #333;
+        }
+        #confirm-button {
+            display: inline-block;
+            font-size: 18px;
+            background-image: linear-gradient(-225deg,#e6ffeb  50%, #c4e5f9 50%);
+            width: 200px;
+            height: 50px;
+            padding: 0 20px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin: 20px auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        #confirm-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+        #confirm-button:hover {
+            animation: ani9 0.4s ease-in-out infinite alternate;
+        }
+
+
+        @keyframes ani9 {
+            0% {
+                transform: translateY(3px);
+            }
+
+            100% {
+                transform: translateY(5px);
+            }
+        }
+        select {
+            width: 90%;
+            height: 50px;
+            text-align: center;
+            font-size: 1.3em;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div style="text-align: center;">
+        <input id="lable" type="text" placeholder="Заголовок" />
+    </div>
+    <label for="category">Выберите категорию:</label>
+    <select name="id_category" id="category"></select><a href="/admin/illnesses/add_category">Добавить новую каттегорию</a>
+    <label for="description-editor">Введите описание:</label>
+    <div id="description-editor"></div>
+    <label for="medical_research_and_diagnostics">Введите медицинские исследования и диагностика:</label>
+    <div id="medical_research_and_diagnostics"></div>
+    <label for="therapy">Терапия:</label>
+    <div id="therapy"></div>
+    <label for="alternative_medicine">Альтернативная медецина:</label>
+    <div id="alternative_medicine"></div>
+    <div id="error" style="color: red"></div>
+    <button id="confirm-button">Отправить</button>
+    <div id="output"></div>
+</div>
+<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
+<script th:inline="javascript">
+    var illness = /*[[${illnesses_info}]]*/ 'Emty';
+
+    Quill.register('modules/imageResize', window.ImageResize);
+    var modules = {
+        toolbar: [
+            [{ 'header': [1, 2, false] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ 'color': [] }],
+            [{ 'background': [] }],
+            [{ 'size': ['small', false, 'large', 'huge'] }],
+            ['link'],
+            ['image', 'code-block'],
+            ['clean'],
+            [{ 'align': [] }]
+        ]
+    }
+    var setting_quill = {
+        theme: 'snow',
+        modules: modules
+    }
+    var description_editor = new Quill('#description-editor', setting_quill);
+    var medical_research = new Quill('#medical_research_and_diagnostics', setting_quill);
+    var therapy = new Quill('#therapy', setting_quill);
+    var alternative = new Quill('#alternative_medicine', setting_quill);
+
+
+    description_editor.root.innerHTML=illness.description
+    medical_research.root.innerHTML=illness.medicalResearchAndDiagnostics
+    therapy.root.innerHTML=illness.therapy
+    alternative.root.innerHTML=illness.alternativeMethods
+    document.getElementById("lable").value=illness.lable
+    var categories = /*[[${all_categories}]]*/ 'Emty';
+    const select = document.getElementById('category');
+    const option = document.createElement('option');
+    option.value = illness.category.id;
+    option.textContent = illness.category.name;
+    select.appendChild(option);
+    categories.forEach(category => {
+        if (category.id!==illness.category.id) {
+            const option = document.createElement('option');
+            option.value = category.id;
+            option.textContent = category.name;
+            select.appendChild(option);
+        }
+    });
+
+    function isNotValid(illness) {
+        return illness.idCategory==="" ||illness.description==="<p><br></p>" || illness.lable==="" || illness.therapy==="<p><br></p>" || illness.alternativeMethods==="<p><br></p>" || illness.medicalResearchAndDiagnostics==="<p><br></p>";
+    }
+
+    document.getElementById('confirm-button').addEventListener('click', function () {
+        const category = document.getElementById('category');
+        var description_editor_html = description_editor.root.innerHTML
+        var medical_research_html = medical_research.root.innerHTML
+        var therapy_html = therapy.root.innerHTML
+        var alternative_html = alternative.root.innerHTML
+        var lable = document.getElementById("lable").value
+        var json = {
+            "description": description_editor_html,
+            "lable": lable,
+            "therapy": therapy_html,
+            "alternativeMethods": alternative_html,
+            "medicalResearchAndDiagnostics": medical_research_html,
+            "idCategory":category.value
+        }
+        if (isNotValid(json)) {
+            document.getElementById("error").innerText="Заполните все поля"
+        } else {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', "/admin/illnesses/add_article?id="+illness.id, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function () {
+                if (xhr.status === 400) {
+                    document.getElementById("error").innerText = "Заполните все поля"
+                }
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    var response = JSON.parse(xhr.responseText);
+                    var last_id = response.redirect_id;
+                    window.location.href = '/admin/illnesses/' + last_id;
+                } else {
+                    console.error('Request failed with status:', xhr.status);
+                }
+            };
+            xhr.onerror = function () {
+                console.error('Request failed');
+            };
+            console.log(json)
+            xhr.send(JSON.stringify(json));
+        }
+    });
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>reviews</title>
+</head>
+<body>
+<ul>
+    <li th:each="review : ${reviews}">
+        <p th:text="'Отзыв '+${review.getText()}+' Оценка: '+${review.getStars()}"></p>
+    </li>
+</ul>
+<p style="color:red" th:text="${err}">
+<form method="post" th:object="${reviewForm}">
+    <label for="text"></label>
+    <div style="color:red" th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></div>
+    <input id="text" type="text" th:field="*{text}" name="text">
+    <label for="stars"></label>
+    <div style="color:red" th:if="${#fields.hasErrors('stars')}" th:errors="*{stars}"></div>
+    <input id="stars" type="number" min="1" max="5" th:field="*{stars}">
+    <input type="submit">
+</form>
+</body>
+</html>

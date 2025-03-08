@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p style="color:green" th:text="${notification}">
+<p style="color:red" th:text="${error}">
+<label for="name">Name Doctor: </label>
+<p id="name" th:text="${me_session.getUser().getFirstName()}+' '+${me_session.getUser().getLastName()}"></p>
+<br>
+<label for="time">Время</label>
+<p id="time" th:text="${me_session.getTimeStart()}+'-'+${me_session.getTimeEnd()}"></p>
+<br>
+<label for="href">Ссылка на zoom конференцию: </label>
+<br>
+<a id="href" th:href="${me_session.getUrl()}">тык</a>
+<form th:href="'/me/sessions/'+${me_session.getId()}" method="post"  th:if="${role == T(com.kafka1.demo.Models.Role).DOCTOR}">
+  <input type="submit" value="start">
+  <input type="hidden" name="prefix" value="start">
+</form>
+<form th:href="'/me/sessions/'+${me_session.getId()}" method="post" th:if="${role == T(com.kafka1.demo.Models.Role).DOCTOR}">
+  <input type="submit" value="stop">
+  <input type="hidden" name="prefix" value="stop">
+
+</form>
+</body>
+</html>

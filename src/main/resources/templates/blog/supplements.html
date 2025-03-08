@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplements</title>
+</head>
+<body>
+<ul>
+    <li th:each="medication : ${medications}">
+        <p th:text="${medication.getName()}+${medication.getInfo()}"></p>
+        <a th:href="'/blog/supplements/'+${medication.getId()}">Ссылка</a>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>articles</title>
+</head>
+<body>
+<ul>
+  <li th:each="article : ${articles}">
+    <a th:href="'/blog/article/'+${article.getId()}" th:text="${article.getName()}"></a>
+  </li>
+</ul>
+</body>
+</html>

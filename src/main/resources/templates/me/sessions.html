@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sessions</title>
+</head>
+<body>
+ <ul>
+    <li th:each="me_session : ${me_sessions}">
+        <a th:href="'/me/sessions/' + ${me_session.getId()}"
+           th:text="${me_session.getDoctor().getUser().getFirstName()} + ' ' +
+                     ${me_session.getDoctor().getUser().getLastName()} + ' ' +
+                     ${me_session.getTimeStart()} + '-' + ${me_session.getTimeEnd()}">
+        </a>
+    </li>
+</ul>
+ <br>
+ <div th:if="${type_session}!='old'"><a href="/me/sessions?prefix=old">Посмотреть старые сесии</a></div>
+ <div th:if="${type_session}=='old'"> <a href="/me/sessions">Посмотреть новые сесии </a></div>
+
+
+</body>
+</html>
