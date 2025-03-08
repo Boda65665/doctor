@@ -187,7 +187,6 @@ public class DoctorControllerService {
         if (isInterfereOtherTimeInterval(doctorSchedulesDTO, timeStart, timeEnd)) {
             return createResponse(responseBody, "Interfere Other Time Interval", BAD_REQUEST);
         }
-
         return null;
     }
 
