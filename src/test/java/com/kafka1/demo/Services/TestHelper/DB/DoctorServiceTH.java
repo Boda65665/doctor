@@ -18,11 +18,13 @@ public class DoctorServiceTH {
     UserDbService userDbService;
 
 
-    public void createDoctor(){
+    public Doctor createDoctor(){
         Doctor doctor = new Doctor();
         doctor.setUser(userDbService.findUserById(1));
         doctor.setDoctorSchedulesList(new ArrayList<>());
 
         doctorDBService.save(doctor);
+
+        return doctorDBService.findDoctorById(1);
     }
 }

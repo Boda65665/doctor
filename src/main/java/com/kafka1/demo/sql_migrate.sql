@@ -41,66 +41,13 @@ create table "doctor_schedule"
     FOREIGN KEY (doctor_id) REFERENCES doctors(id)
 );
 
-create table reviews(
-    id serial PRIMARY KEY,
-    doctor_id int,
-    user_id int,
-    text varchar,
-    stars int,
-    FOREIGN KEY (doctor_id) REFERENCES doctors(id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
-create table article(
-    id serial PRIMARY KEY ,
-    name varchar,
-    text varchar
-);
-
-create table medications(
-  id serial PRIMARY KEY ,
-  name varchar,
-  manual varchar,
-  recommendations varchar,
-  owner int,
-  doctor_id int,
-  user_id int,
-  FOREIGN KEY (owner) REFERENCES users(id),
-  FOREIGN KEY (doctor_id) REFERENCES doctors(id),
-  FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
 create table messages(
     id int PRIMARY KEY ,
     text varchar,
     owner int,
-    doctor_id int,
-    user_id int,
+    doctor int,
+    user int,
     FOREIGN KEY (owner) REFERENCES users(id),
-    FOREIGN KEY (doctor_id) REFERENCES doctors(id),
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (doctor) REFERENCES doctors(id),
+    FOREIGN KEY (user) REFERENCES users(id)
 );
-
-create table products(
-    id serial PRIMARY KEY ,
-    name varchar,
-    description varchar,
-    urls varchar,
-    categories varchar,
-    price decimal
-);
-create table illness_category(
-    id serial PRIMARY KEY,
-    name varchar
-);
-create table illnesses_info(
-    id serial PRIMARY KEY ,
-    description varchar,
-    lable varchar,
-    alternative_methods varchar,
-    therapy varchar,
-    medical_research_and_diagnostics varchar,
-    name varchar,
-    category_id int,
-    FOREIGN KEY (category_id) REFERENCES illness_category(id));
-
