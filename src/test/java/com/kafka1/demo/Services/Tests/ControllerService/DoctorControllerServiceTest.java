@@ -49,7 +49,7 @@ class DoctorControllerServiceTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        doctorControllerServiceTH = new DoctorControllerServiceTH(doctorControllerService, doctorDbService, sessionDbService, userDbService, zoomApi, bindingResult, doctorSchedulesRepository);
+        doctorControllerServiceTH = new DoctorControllerServiceTH(doctorControllerService, doctorDbService, userDbService, zoomApi, bindingResult, doctorSchedulesRepository);
     }
 
     @ParameterizedTest

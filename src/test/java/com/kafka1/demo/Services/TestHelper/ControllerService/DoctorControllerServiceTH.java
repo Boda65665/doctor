@@ -27,7 +27,6 @@ import static org.mockito.Mockito.when;
 public class DoctorControllerServiceTH {
     private final DoctorControllerService doctorControllerService;
     private final DoctorDbService doctorDbService;
-    private final SessionDbService sessionDbService;
     private final UserDbService userDbService;
     private final ZoomApi zoomApi;
     private final BindingResult bindingResult;
@@ -36,10 +35,9 @@ public class DoctorControllerServiceTH {
     private final String TEST_USER_EMAIL = "test_mail";
     private final LocalDate DAY_ORDER = LocalDate.of(2025, 1, 1);
 
-    public DoctorControllerServiceTH(DoctorControllerService doctorControllerService, DoctorDbService doctorDbService, SessionDbService sessionDbService, UserDbService userDbService, ZoomApi zoomApi, BindingResult bindingResult, DoctorSchedulesRepository doctorSchedulesRepository) {
+    public DoctorControllerServiceTH(DoctorControllerService doctorControllerService, DoctorDbService doctorDbService, UserDbService userDbService, ZoomApi zoomApi, BindingResult bindingResult, DoctorSchedulesRepository doctorSchedulesRepository) {
         this.doctorControllerService = doctorControllerService;
         this.doctorDbService = doctorDbService;
-        this.sessionDbService = sessionDbService;
         this.userDbService = userDbService;
         this.zoomApi = zoomApi;
         this.bindingResult = bindingResult;
@@ -132,8 +130,9 @@ public class DoctorControllerServiceTH {
     }
 
     private DoctorDTO generateMockDoctor() {
+        final int TEST_DOCTOR_ID = 1;
         DoctorDTO doctorDTO = new DoctorDTO();
-        doctorDTO.setId(1);
+        doctorDTO.setId(TEST_DOCTOR_ID);
 
         return doctorDTO;
     }

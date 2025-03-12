@@ -19,16 +19,12 @@ public class Message {
     @JoinColumn(name = "owner")
     private User owner;
     @ManyToOne
-    @JoinColumn(name = "doctor_id")
-    private Doctor doctor;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "chat")
+    private Chat chat;
 
-    public Message(User user, Doctor doctor, String text, User owner) {
-        this.user = user;
-        this.doctor = doctor;
+    public Message(String text, User owner, Chat chat) {
         this.text = text;
         this.owner = owner;
+        this.chat = chat;
     }
 }

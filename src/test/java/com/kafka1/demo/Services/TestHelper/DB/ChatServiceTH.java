@@ -1,28 +1,28 @@
 package com.kafka1.demo.Services.TestHelper.DB;
 
+import com.kafka1.demo.Entity.Chat;
 import com.kafka1.demo.Entity.Doctor;
-import com.kafka1.demo.Entity.Message;
 import com.kafka1.demo.Entity.User;
-import com.kafka1.demo.Services.DB.MessageDbService;
+import com.kafka1.demo.Services.DB.ChatDbService;
+import com.kafka1.demo.Services.DB.DoctorDbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MessageServiceTH {
+public class ChatServiceTH {
     @Autowired
-    private DoctorServiceTH doctorServiceTH;
+    private ChatDbService chatDbService;
     @Autowired
     private UserServiceTH userServiceTH;
     @Autowired
-    private MessageDbService messageDbService;
+    private DoctorServiceTH doctorServiceTH;
+
 
     public void save(){
-        Doctor doctor = doctorServiceTH.createDoctor();
         User user = userServiceTH.createUser();
+        Doctor doctor = doctorServiceTH.createDoctor();
+        Chat chat = new Chat(doctor, user);
 
-
-        Message message = new Message(user, doctor, "text", user);
-
-        messageDbService.save(message);
+        chatDbService.save(chat);
     }
 }

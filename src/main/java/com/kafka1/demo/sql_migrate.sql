@@ -41,13 +41,20 @@ create table "doctor_schedule"
     FOREIGN KEY (doctor_id) REFERENCES doctors(id)
 );
 
+create table chats
+(
+    id serial PRIMARY KEY,
+    doctor_id int,
+    user_id int,
+    FOREIGN KEY (doctor_id) REFERENCES doctors(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
 create table messages(
-    id int PRIMARY KEY ,
+    id serial PRIMARY KEY ,
     text varchar,
     owner int,
-    doctor int,
-    user int,
-    FOREIGN KEY (owner) REFERENCES users(id),
-    FOREIGN KEY (doctor) REFERENCES doctors(id),
-    FOREIGN KEY (user) REFERENCES users(id)
+    chat int,
+    FOREIGN KEY (chat) REFERENCES chats(id)
 );
+

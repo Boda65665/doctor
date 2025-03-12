@@ -16,7 +16,10 @@ public class CleanerBD {
 
         clearSessions();
 
+
         clearMessage();
+
+        clearChat();
 
         clearDoctors();
 
@@ -36,6 +39,11 @@ public class CleanerBD {
     private void clearMessage() {
         entityManager.createNativeQuery("DELETE FROM messages").executeUpdate();
         entityManager.createNativeQuery("ALTER SEQUENCE messages_id_seq RESTART WITH 1").executeUpdate();
+    }
+
+    private void clearChat() {
+        entityManager.createNativeQuery("DELETE FROM chats").executeUpdate();
+        entityManager.createNativeQuery("ALTER SEQUENCE chats_id_seq RESTART WITH 1").executeUpdate();
     }
 
     private void clearDoctors() {
