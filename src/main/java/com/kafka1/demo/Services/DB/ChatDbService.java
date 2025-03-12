@@ -5,9 +5,6 @@ import com.kafka1.demo.Entity.Doctor;
 import com.kafka1.demo.Entity.Message;
 import com.kafka1.demo.Entity.User;
 import com.kafka1.demo.Repositoryes.ChatRepository;
-import com.kafka1.demo.Repositoryes.DoctorRepository;
-import com.kafka1.demo.Repositoryes.MessageRepository;
-import com.kafka1.demo.Repositoryes.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -34,5 +31,17 @@ public class ChatDbService {
         if (user == null || doctor == null) return null;
 
         return chatRepository.findByUserAndDoctor(user, doctor);
+    }
+
+    public void addMessage(Message message, int chatId) {
+        Chat chat = chatRepository.findById(chatId);
+        chat.addMessage(message);
+        chatRepository.save(chat);
+    }
+
+    public void removeMessage(int messageId, int chatId) {
+        Chat chat = chatRepository.findById(chatId);
+        chat.removeMessage(messageId);
+        chatRepository.save(chat);
     }
 }

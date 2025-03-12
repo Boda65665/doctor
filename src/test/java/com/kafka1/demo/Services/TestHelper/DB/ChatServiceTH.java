@@ -2,7 +2,9 @@ package com.kafka1.demo.Services.TestHelper.DB;
 
 import com.kafka1.demo.Entity.Chat;
 import com.kafka1.demo.Entity.Doctor;
+import com.kafka1.demo.Entity.Message;
 import com.kafka1.demo.Entity.User;
+import com.kafka1.demo.Repositoryes.ChatRepository;
 import com.kafka1.demo.Services.DB.ChatDbService;
 import com.kafka1.demo.Services.DB.DoctorDbService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +19,16 @@ public class ChatServiceTH {
     @Autowired
     private DoctorServiceTH doctorServiceTH;
 
-
     public void save(){
         User user = userServiceTH.createUser();
         Doctor doctor = doctorServiceTH.createDoctor();
         Chat chat = new Chat(doctor, user);
 
         chatDbService.save(chat);
+    }
+
+    public void addMessage(int id){
+        Message message = new Message();
+        chatDbService.addMessage(message, id);
     }
 }
