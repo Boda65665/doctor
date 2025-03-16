@@ -6,7 +6,7 @@ import com.kafka1.demo.DTO.DoctorDTO;
 import com.kafka1.demo.DTO.SessionDTO;
 import com.kafka1.demo.Entity.Doctor;
 import com.kafka1.demo.Entity.User;
-import com.kafka1.demo.Services.ApiService.SessionControllerService;
+import com.kafka1.demo.Services.Controller.SessionControllerService;
 import com.kafka1.demo.Services.DB.DoctorDbService;
 import com.kafka1.demo.Services.DB.SessionDbService;
 import jakarta.servlet.http.HttpServletRequest;

@@ -56,6 +56,10 @@ public class UserDbService {
         return userRepository.existsByEmail(email);
     }
 
+    public boolean existsById(int id) {
+        return userRepository.existsById(id);
+    }
+
     public boolean isCorrectPassword(String email, String inputPassword) {
         User user = findUserByEmail(email);
         return user.getPassword().equals(SHA256.hash(inputPassword));

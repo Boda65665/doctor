@@ -5,7 +5,7 @@ import com.kafka1.demo.Controllers.AuthController;
 import com.kafka1.demo.Entity.User;
 import com.kafka1.demo.Form.LoginForm;
 import com.kafka1.demo.Form.RegisterForm;
-import com.kafka1.demo.Services.ApiService.AuthControllerService;
+import com.kafka1.demo.Services.Controller.AuthControllerService;
 import com.kafka1.demo.Services.DB.UserDbService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.when;
 

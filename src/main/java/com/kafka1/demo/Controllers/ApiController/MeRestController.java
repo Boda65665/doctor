@@ -1,9 +1,8 @@
 package com.kafka1.demo.Controllers.ApiController;
 
 import com.kafka1.demo.Body.HttpResponseBody;
-import com.kafka1.demo.DTO.SessionDTO;
 import com.kafka1.demo.Entity.User;
-import com.kafka1.demo.Services.ApiService.SessionControllerService;
+import com.kafka1.demo.Services.Controller.SessionControllerService;
 import com.kafka1.demo.Services.DB.SessionDbService;
 import com.kafka1.demo.Services.JwtService;
 import jakarta.servlet.http.HttpServletRequest;

@@ -3,7 +3,7 @@ package com.kafka1.demo.Services.Tests.ControllerService;
 import com.kafka1.demo.Body.HttpResponseBody;
 import com.kafka1.demo.DTO.SessionDTO;
 import com.kafka1.demo.Models.TypeSession;
-import com.kafka1.demo.Services.ApiService.SessionControllerService;
+import com.kafka1.demo.Services.Controller.SessionControllerService;
 import com.kafka1.demo.Services.DB.DoctorDbService;
 import com.kafka1.demo.Services.DB.SessionDbService;
 import com.kafka1.demo.Services.DB.UserDbService;

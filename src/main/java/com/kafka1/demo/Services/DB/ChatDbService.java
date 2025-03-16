@@ -44,4 +44,8 @@ public class ChatDbService {
         chat.removeMessage(messageId);
         chatRepository.save(chat);
     }
+
+    public boolean existsByUserAndDoctor(User user, Doctor doctor) {
+        return chatRepository.existsByUserAndDoctor(user, doctor);
+    }
 }

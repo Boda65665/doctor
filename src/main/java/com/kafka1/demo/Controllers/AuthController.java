@@ -5,9 +5,8 @@ import com.kafka1.demo.Entity.User;
 import com.kafka1.demo.Form.LoginForm;
 import com.kafka1.demo.Form.RegisterForm;
 import com.kafka1.demo.Security.SHA256;
-import com.kafka1.demo.Services.ApiService.AuthControllerService;
+import com.kafka1.demo.Services.Controller.AuthControllerService;
 import com.kafka1.demo.Services.DB.UserDbService;
-import com.kafka1.demo.Services.EmailService;
 import com.kafka1.demo.Services.JwtService;
 import jakarta.servlet.http.Cookie;
 import jakarta.validation.Valid;
@@ -19,7 +18,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.time.LocalDateTime;
 
 @RequestMapping("/auth")
 @Controller

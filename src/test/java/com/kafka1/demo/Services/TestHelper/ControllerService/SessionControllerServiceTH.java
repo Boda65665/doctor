@@ -7,7 +7,7 @@ import com.kafka1.demo.Entity.Doctor;
 import com.kafka1.demo.Entity.Session;
 import com.kafka1.demo.Entity.User;
 import com.kafka1.demo.Models.TypeSession;
-import com.kafka1.demo.Services.ApiService.SessionControllerService;
+import com.kafka1.demo.Services.Controller.SessionControllerService;
 import com.kafka1.demo.Services.DB.DoctorDbService;
 import com.kafka1.demo.Services.DB.SessionDbService;
 import com.kafka1.demo.Services.DB.UserDbService;

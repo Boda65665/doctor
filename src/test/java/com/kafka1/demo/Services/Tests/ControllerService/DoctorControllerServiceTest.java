@@ -5,7 +5,7 @@ import com.kafka1.demo.DTO.DoctorSchedulesDTO;
 import com.kafka1.demo.Models.DayOfWeek;
 import com.kafka1.demo.Models.TimeInterval;
 import com.kafka1.demo.Repositoryes.DoctorSchedulesRepository;
-import com.kafka1.demo.Services.ApiService.DoctorControllerService;
+import com.kafka1.demo.Services.Controller.DoctorControllerService;
 import com.kafka1.demo.Services.DB.DoctorDbService;
 import com.kafka1.demo.Services.DB.SessionDbService;
 import com.kafka1.demo.Services.DB.UserDbService;

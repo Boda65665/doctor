@@ -2,7 +2,7 @@ package com.kafka1.demo.Controllers.Tests;
 
 import com.kafka1.demo.Controllers.AuthController;
 import com.kafka1.demo.Controllers.TestHelper.AuthControllerTH;
-import com.kafka1.demo.Services.ApiService.AuthControllerService;
+import com.kafka1.demo.Services.Controller.AuthControllerService;
 import com.kafka1.demo.Services.DB.UserDbService;
 import com.kafka1.demo.Services.JwtService;
 import jakarta.servlet.http.HttpServletRequest;

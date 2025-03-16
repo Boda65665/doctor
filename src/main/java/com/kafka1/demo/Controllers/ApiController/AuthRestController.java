@@ -3,7 +3,7 @@ package com.kafka1.demo.Controllers.ApiController;
 import com.kafka1.demo.Body.HttpResponseBody;
 import com.kafka1.demo.Form.LoginForm;
 import com.kafka1.demo.Form.RegisterForm;
-import com.kafka1.demo.Services.ApiService.AuthControllerService;
+import com.kafka1.demo.Services.Controller.AuthControllerService;
 import com.kafka1.demo.Services.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;

@@ -5,12 +5,12 @@ import lombok.Data;
 
 @Data
 public class SchedulesBody {
-    @NotNull
+    @NotNull(message = "поле id не может быть равно null")
     private int id;
-    @NotNull
+    @NotNull(message = "поле dayOfWeekString не может быть равно null")
     private String dayOfWeekString;
-    @NotNull
+    @NotNull(message = "поле timeStartString не может быть равно null")
     private String timeStartString;
-    @NotNull
+    @NotNull(message = "поле timeEndString не может быть равно null")
     private String timeEndString;
 }

@@ -4,7 +4,7 @@ import com.kafka1.demo.Body.HttpResponseBody;
 import com.kafka1.demo.Entity.User;
 import com.kafka1.demo.Form.LoginForm;
 import com.kafka1.demo.Form.RegisterForm;
-import com.kafka1.demo.Services.ApiService.AuthControllerService;
+import com.kafka1.demo.Services.Controller.AuthControllerService;
 import com.kafka1.demo.Services.DB.UserDbService;
 import com.kafka1.demo.Services.EmailService;
 import com.kafka1.demo.Services.JwtService;

@@ -58,6 +58,7 @@ public class ChatDbServiceTest {
     public void addMessage(){
         chatServiceTH.save();
 
+        System.out.println(chatRepository.findAll().get(0).getId());
         Chat chat = chatRepository.findById(CHAT_ID);
         assertEquals(0, chat.getMessages().size());
 

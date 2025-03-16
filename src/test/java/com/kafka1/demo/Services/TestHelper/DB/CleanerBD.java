@@ -43,7 +43,7 @@ public class CleanerBD {
 
     private void clearChat() {
         entityManager.createNativeQuery("DELETE FROM chats").executeUpdate();
-        entityManager.createNativeQuery("ALTER SEQUENCE chats_id_seq RESTART WITH 1").executeUpdate();
+        entityManager.createNativeQuery("ALTER SEQUENCE chat_seq RESTART WITH 1").executeUpdate();
     }
 
     private void clearDoctors() {

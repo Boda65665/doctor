@@ -1,7 +1,7 @@
 package com.kafka1.demo.Services.Tests.ControllerService;
 
 import com.kafka1.demo.Body.HttpResponseBody;
-import com.kafka1.demo.Services.ApiService.AuthControllerService;
+import com.kafka1.demo.Services.Controller.AuthControllerService;
 import com.kafka1.demo.Services.DB.UserDbService;
 import com.kafka1.demo.Services.EmailService;
 import com.kafka1.demo.Services.JwtService;

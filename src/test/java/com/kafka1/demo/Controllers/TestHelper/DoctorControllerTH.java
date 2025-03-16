@@ -5,7 +5,7 @@ import com.kafka1.demo.Body.SchedulesBody;
 import com.kafka1.demo.Controllers.DoctorController;
 import com.kafka1.demo.DTO.DoctorDTO;
 import com.kafka1.demo.DTO.UserDTO;
-import com.kafka1.demo.Services.ApiService.DoctorControllerService;
+import com.kafka1.demo.Services.Controller.DoctorControllerService;
 import com.kafka1.demo.Services.DB.DoctorDbService;
 import com.kafka1.demo.Services.DB.UserDbService;
 import com.kafka1.demo.Services.JwtService;

@@ -2,7 +2,7 @@ package com.kafka1.demo.Controllers.Tests;
 
 import com.kafka1.demo.Controllers.DoctorController;
 import com.kafka1.demo.Controllers.TestHelper.DoctorControllerTH;
-import com.kafka1.demo.Services.ApiService.DoctorControllerService;
+import com.kafka1.demo.Services.Controller.DoctorControllerService;
 import com.kafka1.demo.Services.DB.DoctorDbService;
 import com.kafka1.demo.Services.DB.UserDbService;
 import com.kafka1.demo.Services.JwtService;

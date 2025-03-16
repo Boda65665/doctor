@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ChatRepository extends JpaRepository<Chat, Integer> {
     Chat findById(int chatId);
     Chat findByUserAndDoctor(User user, Doctor doctor);
+    boolean existsByUserAndDoctor(User user, Doctor doctor);
 }
